@@ -4,7 +4,7 @@ This project is a high-quality, production-ready, cross-platform (Web, iOS, Andr
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
 - **Cross-Platform:** A single codebase that runs natively on iOS, Android, and on the Web.
 - **Responsive UI:** The UI adapts to all screen sizes, with platform-specific header alignment.
@@ -21,7 +21,7 @@ This project is a high-quality, production-ready, cross-platform (Web, iOS, Andr
 
 ---
 
-## 🛠 Tech Choices & Tradeoffs
+## Tech Choices & Tradeoffs
 
 | Technology                 | Rationale                                                                                                                                                                                                                     |
 | :------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -34,7 +34,7 @@ This project is a high-quality, production-ready, cross-platform (Web, iOS, Andr
 
 ---
 
-## 🏃 How to Run the Application
+## How to Run the Application
 
 This project uses the **Expo** framework.
 
@@ -82,7 +82,7 @@ This will run the Jest test suite and show the results in your terminal.
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 Here is the folder and file structure for the application's source code:
 
