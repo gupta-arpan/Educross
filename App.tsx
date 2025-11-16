@@ -1,4 +1,3 @@
-// App.tsx
 import React, { useState, useMemo, useCallback } from 'react';
 import { useColorScheme } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -25,7 +24,6 @@ export default function App() {
 
   const paperTheme = isDarkTheme ? DarkTheme : LightTheme;
 
-  // Create the matching Navigation theme (for the tab bar)
   const navigationTheme = useMemo(() => {
     const navTheme = isDarkTheme ? NavigationDarkTheme : NavigationDefaultTheme;
 
@@ -34,9 +32,9 @@ export default function App() {
       colors: {
         ...navTheme.colors,
         background: paperTheme.colors.background,
-        card: paperTheme.colors.surface, // Tab bar background
-        text: paperTheme.colors.onSurface, // Tab bar text
-        primary: paperTheme.colors.primary, // Active tab color
+        card: paperTheme.colors.surface,
+        text: paperTheme.colors.onSurface,
+        primary: paperTheme.colors.primary,
         border: paperTheme.colors.outlineVariant,
       },
     };

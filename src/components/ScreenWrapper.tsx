@@ -1,4 +1,3 @@
-// src/components/ScreenWrapper.tsx
 import React from 'react';
 import { View, StyleSheet, Platform, ScrollView } from 'react-native';
 import { useTheme } from 'react-native-paper';
@@ -40,6 +39,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   contentContainer: {
-    paddingBottom: 20, // Extra padding for scroll content
+    paddingBottom: 20,
   },
 });

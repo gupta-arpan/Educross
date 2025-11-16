@@ -1,9 +1,7 @@
-// src/navigation/AppNavigation.tsx
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-// Import our screens
 import ActivityListScreen from '../screens/ActivityListScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 

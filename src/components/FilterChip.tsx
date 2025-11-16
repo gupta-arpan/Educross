@@ -1,4 +1,3 @@
-// src/components/FilterChip.tsx
 import React from 'react';
 import { Chip } from 'react-native-paper';
 
@@ -11,10 +10,10 @@ interface Props {
 export default function FilterChip({ label, onPress, selected }: Props) {
   return (
     <Chip
-      mode={selected ? 'flat' : 'outlined'} // 'flat' has a background, 'outlined' is just a border
+      mode={selected ? 'flat' : 'outlined'}
       selected={selected}
       onPress={onPress}
-      style={{ marginRight: 8 }} // Add spacing between chips
+      style={{ marginRight: 8 }}
     >
       {label}
     </Chip>

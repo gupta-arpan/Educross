@@ -1,4 +1,3 @@
-// src/screens/ProfileScreen.tsx
 import React, { useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Switch, useTheme } from 'react-native-paper';

@@ -1,6 +1,6 @@
 // src/screens/ActivityListScreen.tsx
 import React, { useState, useMemo } from 'react';
-import { View, FlatList, Alert, StyleSheet, ScrollView } from 'react-native';
+import { View, FlatList, Alert, StyleSheet, ScrollView, Platform } from 'react-native';
 import { useTheme, Searchbar } from 'react-native-paper'; 
 import ScreenWrapper from '../components/ScreenWrapper';
 import AppHeader from '../components/AppHeader';
@@ -42,10 +42,14 @@ export default function ActivityListScreen() {
   }, [selectedFilter, searchQuery]);
 
   const handleActionPress = (activity: Activity) => {
-    Alert.alert(
-      'Action Triggered',
-      `You clicked the action for "${activity.title}"`
-    );
+    const message = `You clicked the action for "${activity.title}"`;
+    const title = 'Action Triggered';
+
+    if (Platform.OS === 'web') {
+      alert(message);
+    } else {
+      Alert.alert(title, message);
+    }
   };
 
   const renderFilterChips = () => (

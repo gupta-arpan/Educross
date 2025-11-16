@@ -1,4 +1,3 @@
-// src/components/ActivityCard.tsx
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button, Card, Chip, Text, useTheme } from 'react-native-paper';
@@ -22,7 +21,7 @@ export default function ActivityCard({ activity, onPressAction }: Props) {
     switch (status) {
       case 'Completed':
         icon = 'check-circle';
-        color = theme.colors.success; // We will define this color in our theme
+        color = theme.colors.success;
         break;
       case 'InProgress':
         icon = 'progress-clock';
@@ -81,7 +80,6 @@ export default function ActivityCard({ activity, onPressAction }: Props) {
     if (activity.type === 'OnlineClass') {
       return 'video';
     }
-    // It's an Assessment
     switch (activity.assessmentType) {
       case 'Quiz':
         return 'file-question';
@@ -93,8 +91,6 @@ export default function ActivityCard({ activity, onPressAction }: Props) {
         return 'file';
     }
   };
-
-  // === 2. Render specific details for each activity type ===
 
   const renderDetails = () => {
     if (activity.type === 'OnlineClass') {
@@ -134,7 +130,7 @@ export default function ActivityCard({ activity, onPressAction }: Props) {
         title={activity.title}
         titleVariant="titleMedium"
         titleNumberOfLines={2}
-        subtitle={activity.program} // e.g., "AI", "Machine Learning"
+        subtitle={activity.program}
         subtitleStyle={{ color: theme.colors.primary, fontWeight: 'bold' }}
         left={(props) => (
           <MaterialCommunityIcons

@@ -1,32 +1,28 @@
-// src/theme/theme.ts
 import {
-  MD3LightTheme, // [CHANGED] Use MD3 Light
+  MD3LightTheme,
   MD3DarkTheme,
 } from 'react-native-paper';
 
-// Define custom colors
 const customColors = {
-  success: '#4CAF50', // Green
-  warning: '#FFC107', // Yellow
+  success: '#4CAF50',
+  warning: '#FFC107',
 };
 
-// Create the Light Theme
 export const LightTheme = {
-  ...MD3LightTheme, // [CHANGED] Use MD3
+  ...MD3LightTheme, 
   colors: {
-    ...MD3LightTheme.colors, // [CHANGED] Use MD3
-    ...customColors, // Add our custom colors
-    primary: '#6200ee', // Our purple
-    background: '#fef7ff', // A nicer MD3 light background
+    ...MD3LightTheme.colors, 
+    ...customColors, 
+    primary: '#6200ee',
+    background: '#fef7ff',
   },
 };
 
-// Create the Dark Theme
 export const DarkTheme = {
-  ...MD3DarkTheme, // This was already correct
+  ...MD3DarkTheme,
   colors: {
-    ...MD3DarkTheme.colors, // This was already correct
-    ...customColors, // Add our custom colors
-    primary: '#bb86fc', // A lighter purple for dark mode
+    ...MD3DarkTheme.colors,
+    ...customColors,
+    primary: '#bb86fc',
   },
 };
