@@ -6,9 +6,9 @@ import { Activity, OnlineClassActivity, AssessmentActivity } from '../types';
 import { formatActivityDate, formatDueDate } from '../utils/dateUtils';
 
 const iconColors = {
-  quiz: '#673AB7', // Purple
-  assignment: '#FF9800', // Orange
-  discussion: '#009688', // Teal
+  quiz: '#673AB7',
+  assignment: '#FF9800',
+  discussion: '#009688',
 };
 interface Props {
   activity: Activity;
@@ -83,7 +83,6 @@ export default function ActivityCard({ activity, onPressAction }: Props) {
 
   const getCardIcon = () => {
     if (activity.type === 'OnlineClass') {
-      // Return a blue icon for Online Classes
       return (
         <Avatar.Icon
           size={40}
@@ -94,7 +93,6 @@ export default function ActivityCard({ activity, onPressAction }: Props) {
       );
     }
 
-    // It's an Assessment, so pick a color and icon
     let icon: string;
     let color: string;
 
@@ -117,7 +115,6 @@ export default function ActivityCard({ activity, onPressAction }: Props) {
         break;
     }
 
-    // Return the colored icon for Assessments
     return (
       <Avatar.Icon
         size={40}
@@ -223,6 +220,5 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
   },
   actionButton: {
-    // flexShrink: 1, // Make sure button doesn't overflow
   },
 });
