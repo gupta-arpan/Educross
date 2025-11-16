@@ -1,5 +1,4 @@
-// src/screens/ActivityListScreen.tsx
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { View, FlatList, Alert, StyleSheet, ScrollView, Platform } from 'react-native';
 import { useTheme, Searchbar, Text } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -9,6 +8,7 @@ import ActivityCard from '../components/ActivityCard';
 import { MOCK_ACTIVITIES } from '../data/mockData';
 import { Activity } from '../types';
 import FilterChip from '../components/FilterChip';
+import ActivityCardSkeleton from '../components/ActivityCardSkeleton';
 
 type FilterCategory = 'All' | 'AI' | 'Machine Learning' | 'Cloud Computing';
 const FILTER_CATEGORIES: FilterCategory[] = [
@@ -18,11 +18,21 @@ const FILTER_CATEGORIES: FilterCategory[] = [
   'Cloud Computing',
 ];
 
+const SKELETON_DATA = Array.from(Array(5).keys());
+
 export default function ActivityListScreen() {
   const theme = useTheme();
   const [selectedFilter, setSelectedFilter] =
     useState<FilterCategory>('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const filteredActivities = useMemo(() => {
     let activities = MOCK_ACTIVITIES;
@@ -68,9 +78,40 @@ export default function ActivityListScreen() {
     </View>
   );
 
+  const renderItem = ({ item }: { item: Activity }) => (
+    <ActivityCard
+      activity={item}
+      onPressAction={handleActionPress}
+    />
+  );
+
+  const renderSkeleton = () => <ActivityCardSkeleton />;
+
+  if (isLoading) {
+    return (
+      <ScreenWrapper>
+        <AppHeader title="My Activities" />
+        <Searchbar
+          placeholder="Search activities..."
+          value={searchQuery}
+          style={styles.searchbar}
+          editable={true} // Disable while loading
+        />
+        {renderFilterChips()}
+        <FlatList
+          data={SKELETON_DATA}
+          renderItem={renderSkeleton}
+          keyExtractor={(item) => `skeleton-${item}`}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.listContent}
+        />
+      </ScreenWrapper>
+    );
+  }
+
   return (
     <ScreenWrapper>
-      <AppHeader title="My Learning Activities" />
+      <AppHeader title="My Activities" />
 
       <Searchbar
         placeholder="Search activities..."
