@@ -56,7 +56,7 @@ export const MOCK_ACTIVITIES: Activity[] = [
     type: 'OnlineClass',
     status: 'Pending',
     program: 'Cloud Computing',
-    dateTime: '2025-11-19T16:00:00Z',
+    dateTime: '2025-11-16T16:00:00Z',
     durationMinutes: 90,
     instructor: 'Dr. Grace Hopper',
     meetingLink: '#',
