@@ -1,7 +1,8 @@
 // src/screens/ActivityListScreen.tsx
 import React, { useState, useMemo } from 'react';
 import { View, FlatList, Alert, StyleSheet, ScrollView, Platform } from 'react-native';
-import { useTheme, Searchbar } from 'react-native-paper'; 
+import { useTheme, Searchbar, Text } from 'react-native-paper';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import ScreenWrapper from '../components/ScreenWrapper';
 import AppHeader from '../components/AppHeader';
 import ActivityCard from '../components/ActivityCard';
@@ -93,7 +94,23 @@ export default function ActivityListScreen() {
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={
           <View style={styles.emptyContainer}>
-            <AppHeader title="No activities found." />
+            <MaterialCommunityIcons
+              name="magnify-close"
+              size={64}
+              color={theme.colors.onSurfaceDisabled}
+            />
+            <Text
+              variant="titleLarge"
+              style={{ color: theme.colors.onSurfaceDisabled, marginTop: 16 }}
+            >
+              No activities found
+            </Text>
+            <Text
+              variant="bodyMedium"
+              style={{ color: theme.colors.onSurfaceDisabled, marginTop: 4 }}
+            >
+              Try adjusting your search or filters.
+            </Text>
           </View>
         }
       />

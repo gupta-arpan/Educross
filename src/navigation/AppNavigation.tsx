@@ -8,7 +8,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 export type RootParamList = {
   Activities: undefined;
   Profile: undefined;
-};
+};6
 
 const Tab = createBottomTabNavigator<RootParamList>();
 

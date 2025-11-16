@@ -1,10 +1,15 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Button, Card, Chip, Text, useTheme } from 'react-native-paper';
+import { Button, Card, Chip, Text, useTheme, Avatar } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Activity, OnlineClassActivity, AssessmentActivity } from '../types';
 import { formatActivityDate, formatDueDate } from '../utils/dateUtils';
 
+const iconColors = {
+  quiz: '#673AB7', // Purple
+  assignment: '#FF9800', // Orange
+  discussion: '#009688', // Teal
+};
 interface Props {
   activity: Activity;
   onPressAction: (activity: Activity) => void;
@@ -30,7 +35,7 @@ export default function ActivityCard({ activity, onPressAction }: Props) {
       case 'Pending':
       default:
         icon = 'clock-outline';
-        color = theme.colors.warning; 
+        color = theme.colors.warning;
         break;
     }
 
@@ -78,18 +83,49 @@ export default function ActivityCard({ activity, onPressAction }: Props) {
 
   const getCardIcon = () => {
     if (activity.type === 'OnlineClass') {
-      return 'video';
+      // Return a blue icon for Online Classes
+      return (
+        <Avatar.Icon
+          size={40}
+          icon="video"
+          color="#fff"
+          style={{ backgroundColor: theme.colors.primary }}
+        />
+      );
     }
+
+    // It's an Assessment, so pick a color and icon
+    let icon: string;
+    let color: string;
+
     switch (activity.assessmentType) {
       case 'Quiz':
-        return 'file-question';
+        icon = 'file-question';
+        color = iconColors.quiz;
+        break;
       case 'Assignment':
-        return 'file-document-edit';
+        icon = 'file-document-edit';
+        color = iconColors.assignment;
+        break;
       case 'Discussion':
-        return 'forum';
+        icon = 'forum';
+        color = iconColors.discussion;
+        break;
       default:
-        return 'file';
+        icon = 'file';
+        color = theme.colors.onSurfaceDisabled;
+        break;
     }
+
+    // Return the colored icon for Assessments
+    return (
+      <Avatar.Icon
+        size={40}
+        icon={icon}
+        color="#fff"
+        style={{ backgroundColor: color }}
+      />
+    );
   };
 
   const renderDetails = () => {
@@ -132,14 +168,7 @@ export default function ActivityCard({ activity, onPressAction }: Props) {
         titleNumberOfLines={2}
         subtitle={activity.program}
         subtitleStyle={{ color: theme.colors.primary, fontWeight: 'bold' }}
-        left={(props) => (
-          <MaterialCommunityIcons
-            {...props}
-            name={getCardIcon()}
-            size={24}
-            color={theme.colors.onSurface}
-          />
-        )}
+        left={() => getCardIcon()}
       />
       <Card.Content>
         <View style={styles.detailsContainer}>{renderDetails()}</View>
@@ -172,6 +201,7 @@ const InfoRow = ({ icon, text }: { icon: string; text: string }) => {
 const styles = StyleSheet.create({
   card: {
     marginVertical: 8,
+    elevation: 2,
   },
   detailsContainer: {
     marginTop: 8,
