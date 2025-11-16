@@ -4,6 +4,13 @@ This project is a high-quality, production-ready, cross-platform (Web, iOS, Andr
 
 ---
 
+## Deployment
+
+The application is deployed on Render:
+https://educross.onrender.com/
+
+---
+
 ## Key Features
 
 - **Cross-Platform:** A single codebase that runs natively on iOS, Android, and on the Web.
